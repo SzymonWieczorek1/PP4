@@ -3,15 +3,17 @@ package pl.szywie.credit;
 import java.math.BigDecimal;
 
 public class CreditCard {
-    private BigDecimal creditLimit;
-    public void assignCreditCardLimit(BigDecimal creditLimit) {
-        if (creditLimit != null) {
+    private BigDecimal initialLimit;
+
+    public void assignCreditLimit(BigDecimal newCreditLimit) {
+        if (this.initialLimit == null) {
             throw new CantAssignLimitTwiceException();
         }
-        this.creditLimit = creditLimit;
+        this.initialLimit = newCreditLimit;
+
     }
 
-    public Object getBalance() {
-        return creditLimit;
+    public BigDecimal getBalance() {
+        return initialLimit;
     }
 }
