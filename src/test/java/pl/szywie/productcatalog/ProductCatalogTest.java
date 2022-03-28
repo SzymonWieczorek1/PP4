@@ -41,9 +41,12 @@ public class ProductCatalogTest {
         ProductCatalog catalog = thereIsProductCatalog();
         String productId = catalog.addProduct("lego-set","name");
         catalog.assignPrice(productId, BigDecimal.valueOf(10.10));
-        catalog.assignImage()
-        ProductData loaded = catalog.getDetails(productId);
-        assertEquals(BigDecimal.valueOf());
+        catalog.assignImage(productId, "http://nicePicture");
+
+        catalog.publish(productId);
+
+        List<ProductData> products = catalog.allPublishedProducts();
+        assertEquals(1, products.size());
     }
     private ProductCatalog thereIsProductCatalog() {
         return new ProductCatalog();
